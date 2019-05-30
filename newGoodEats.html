@@ -91,7 +91,7 @@ html {
 .slider::-moz-range-thumb {
   width: 25px;
   height: 25px;
-  background: #4CAF50;
+  background: #1ed3ff;
   cursor: pointer;
 }
 
@@ -106,7 +106,7 @@ html {
 .rollButton {
   top:20px;
   left: 50%;
-  background-color: #0c9c0c;
+  background-color: #26af26;
   border: none;
   border-radius: 4px;
   padding: 20px;
@@ -213,13 +213,15 @@ html {
       fpElem.style.display = "block";
       picElem.style.display = "none"
       buttonRoll.value = "Roll the Dice";
+      buttonRoll.style.backgroundColor = "#26af26";
     } else {
       fpElem.style.display = "none";
       picElem.style.display = "block";
       fillRanArray();
       console.log(randomArray);
       randomImage(randomArray[Math.floor(Math.random() * randomArray.length)]);
-      buttonRoll.value = "Change Points";
+      buttonRoll.value = "Redo Points";
+      buttonRoll.style.backgroundColor = "#eaab36";
     }
 }
 
