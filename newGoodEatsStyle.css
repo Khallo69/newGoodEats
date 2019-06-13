@@ -199,6 +199,13 @@ html {
   font-weight: 900px;
 }
 
+.button.back:before {
+  font-family: 'Font Awesome\ 5 Free';
+  content: '\f359';
+  padding-right: 10px;
+  font-weight: 900px;
+}
+
 .button:hover {
   background-color: #fcad26;
   color: #fff;

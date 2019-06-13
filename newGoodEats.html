@@ -25,7 +25,7 @@
           <p><center>Points: <span id="chipValue"></span></center></p>
         </div>
       </div>
-      
+      <div><p></p></div>
       <div class="asideTwo" id="panDisplay">
         <div class="slidecontainer">
           <h4>Panera</h4>
@@ -33,7 +33,7 @@
           <p><center>Points: <span id="panValue"></span></center></p>
         </div>
       </div>
-
+      <div><p></p></div>
       <div class="asideTwo" id="tacoDisplay">
         <div class="slidecontainer">
           <h4>Taco Bell</h4>
@@ -57,7 +57,7 @@
           <div class="sliderSwitch round"></div>
         </label>
       </div> 
-
+      <div><p></p></div>
       <div class="asideThree">
         <label class="foodType">
           Panera
@@ -67,7 +67,7 @@
           <div class="sliderSwitch round"></div>
         </label>
       </div>
-
+      <div><p></p></div>
       <div class="asideThree">
         <label class="foodType">
           Taco Bell
@@ -81,6 +81,7 @@
 
   <button class="button roll" type="button" id ="rollButt"  onclick="displayElement()">Roll the Dice</button> 
   <button class="button redo" type="button" id ="redoButt"  onclick="displayElement()">Redo Points</button> 
+  <button class="button back" type="button" id ="backButt"  onclick="displayMenu()">Back</button> 
 
 <script>
   var randomArray = [1, 2, 3];
@@ -93,7 +94,8 @@
       chipElem = document.getElementById('chipDisplay');
   var image = document.getElementById('myImage');
   var buttonRoll = document.getElementById('rollButt'),
-      buttonRedo = document.getElementById('redoButt');
+      buttonRedo = document.getElementById('redoButt'),
+      buttonBack = document.getElementById('backButt');
   var tacoSwitch = document.getElementById('tacoCheck'),
       panSwitch = document.getElementById('panCheck'),
       chipSwitch = document.getElementById('chipCheck');
@@ -102,6 +104,7 @@
   menuElem.style.display = "none";
   buttonRoll.style.display = "block";
   buttonRedo.style.display = "none";
+  buttonBack.style.display = "none";
   tacoElem.style.display = "block";
   panElem.style.display = "block";
   chipElem.style.display = "block";
@@ -134,6 +137,7 @@
       takeoutChoices.style.display = "block";
       buttonRoll.style.display = "none";
       buttonRedo.style.display = "none";
+      buttonBack.style.display = "block";
     }
     else
     {
@@ -141,6 +145,7 @@
       picElem.style.display = "none";
       takeoutChoices.style.display = "none";
       buttonRoll.style.display = "block";
+      buttonBack.style.display = "none";
     }
   }
 
@@ -174,17 +179,21 @@ function fillRanArray(){
     {
       randomArray = [1, 2, 3];
     }
-  for(var i = 0; i < tacoSlider.value; i++)
-    {
-      randomArray.push(1);
+    if(tacoSwitch.checked){
+      for(var i = 0; i < tacoSlider.value; i++)
+        {
+            randomArray.push(1);
+        }
     }
   for(var i = 0; i < panSlider.value; i++)
     {
-      randomArray.push(2);
+      if(panSwitch.checked)
+        randomArray.push(2);
     }
   for(var i = 0; i < chipSlider.value; i++)
     {
-      randomArray.push(3);      
+      if(chipSwitch.checked)
+        randomArray.push(3);      
     }
 }
 function randomImage(val){
