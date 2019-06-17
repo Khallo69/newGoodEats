@@ -17,6 +17,14 @@
   <div class="col-12 col-s-12">
     <div class="aside" id="feelingPoints">
       <!--<h2><center>Feeling Points</h2>-->
+      <div class="asideTwo" id="chickDisplay">
+        <div class="slidecontainer">
+          <h4>Chick-fil-a</h4>
+          <input type="range" min="0" max="10" value="0" class="slider" id="chickRange">
+          <p><center>Points: <span id="chickValue"></span></center></p>
+        </div>
+      </div>
+      <div><p></p></div>
 
       <div class="asideTwo" id="chipDisplay">
         <div class="slidecontainer">
@@ -69,6 +77,17 @@
     </div>
     <div class="aside" id="takeoutChoices">
       <!--Todo: Add switches for active point sliders -->
+      <div class="asideThree">
+        <label class="foodType">
+          Chick-fil-a
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="chickCheck">
+          <div class="sliderSwitch round"></div>
+        </label>
+      </div> 
+      <div><p></p></div>
+
       <div class="asideThree">
         <label class="foodType">
           Chipotle
@@ -136,6 +155,7 @@
       picElem = document.getElementById('foodPic'),
       menuElem = document.getElementById('takeoutChoices'),
       chipElem = document.getElementById('chipDisplay'),
+      chickElem = document.getElementById('chickDisplay'),
       macElem = document.getElementById('macDisplay'),
       panElem = document.getElementById('panDisplay'),
       tacoElem = document.getElementById('tacoDisplay');
@@ -144,11 +164,14 @@
   var buttonRoll = document.getElementById('rollButt'),
       buttonRedo = document.getElementById('redoButt'),
       buttonBack = document.getElementById('backButt');
-  var chipSwitch = document.getElementById('chipCheck'),
+  var chickSwitch = document.getElementById('chickCheck'),
+      chipSwitch = document.getElementById('chipCheck'),
       macSwitch = document.getElementById('macCheck'),
       panSwitch = document.getElementById('panCheck'),
       tacoSwitch = document.getElementById('tacoCheck');
       wendSwitch = document.getElementById('wendCheck');
+  var chickSlider = document.getElementById("chickRange"),
+      chickOutput = document.getElementById("chickValue");
   var chipSlider = document.getElementById("chipRange"),
       chipOutput = document.getElementById("chipValue");
   var macSlider = document.getElementById("macRange"),
@@ -167,12 +190,14 @@
   buttonRoll.style.display = "block";
   buttonRedo.style.display = "none";
   buttonBack.style.display = "none";
+  chickElem.style.display = "block";
   chipElem.style.display = "block";
   macElem.style.display = "block";
   panElem.style.display = "block";
   tacoElem.style.display = "block";
   wendElem.style.display = "block";
   
+  chickSwitch.checked = true;
   chipSwitch.checked = true;
   panSwitch.checked = true;
   macSwitch.checked = true;
@@ -216,12 +241,16 @@
     }
   }
 
+chickOutput.innerHTML = chickSlider.value;
 chipOutput.innerHTML = chipSlider.value;
 macOutput.innerHTML = macSlider.value;
 panOutput.innerHTML = panSlider.value;
 tacoOutput.innerHTML = tacoSlider.value;
 wendOutput.innerHTML = wendSlider.value;
 
+chickSlider.oninput = function() {
+  chickOutput.innerHTML = this.value;
+}
 chipSlider.oninput = function() {
   chipOutput.innerHTML = this.value;
 }
@@ -239,13 +268,14 @@ wendSlider.oninput = function() {
 }
 
 function fillRanArray(){
-  totalFeelingPoints = chipSlider.value + macSlider.value + panSlider.value + tacoSlider.value + wendSlider.value;
+  totalFeelingPoints = chickSlider.value + chipSlider.value + macSlider.value + panSlider.value + tacoSlider.value + wendSlider.value;
   randomArray = [];
-  checksAndFeelings(chipSwitch, chipSlider, 1);
-  checksAndFeelings(macSwitch, macSlider, 2);
-  checksAndFeelings(panSwitch, panSlider, 3);
-  checksAndFeelings(tacoSwitch, tacoSlider, 4);
-  checksAndFeelings(wendSwitch, wendSlider, 5);
+  checksAndFeelings(chickSwitch, chickSlider, 1);
+  checksAndFeelings(chipSwitch, chipSlider, 2);
+  checksAndFeelings(macSwitch, macSlider, 3);
+  checksAndFeelings(panSwitch, panSlider, 4);
+  checksAndFeelings(tacoSwitch, tacoSlider, 5);
+  checksAndFeelings(wendSwitch, wendSlider, 6);
 }
 
 function randomImage(val){
@@ -253,28 +283,35 @@ function randomImage(val){
   image.src = "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png";
   switch(val) {
     case 1:
-      image.src = "https://cdn.freebiesupply.com/logos/large/2x/chipotle-mexican-grill-logo-png-transparent.png";
+      image.src = "Chickfila.png";
       break;
 
     case 2:
-      image.src = "https://seeklogo.net/wp-content/uploads/2011/04/old-mcdonalds-vector-logo.png";
+      image.src = "Chipotle.png";
       break;
 
     case 3:
-      image.src = "https://cdn.freebiesupply.com/logos/large/2x/panera-bread-logo-png-transparent.png";
+      image.src = "McDonalds.png";
       break;
 
     case 4:
-      image.src = "https://cdn.freebiesupply.com/logos/large/2x/taco-bell-5-logo-png-transparent.png";
+      image.src = "Panera.png";
       break;
 
     case 5:
-      image.src = "http://www.stickpng.com/assets/images/58429d58a6515b1e0ad75ae8.png";
+      image.src = "Tacobell.png";
+      break;
+
+    case 6:
+      image.src = "Wendys.png";
       break;
     }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  chickSwitch.addEventListener('change', function () {
+    checkSwitches(chickSwitch, chickDisplay, chickSlider, chickOutput);  
+  });
   chipSwitch.addEventListener('change', function () {
     checkSwitches(chipSwitch, chipDisplay, chipSlider, chipOutput);  
   });
