@@ -26,6 +26,16 @@
         </div>
       </div>
       <div><p></p></div>
+
+      <div class="asideTwo" id="macDisplay">
+        <div class="slidecontainer">
+          <h4>McDonald's</h4>
+          <input type="range" min="0" max="10" value="0" class="slider" id="macRange">
+          <p><center>Points: <span id="macValue"></span></center></p>
+        </div>
+      </div>
+      <div><p></p></div>
+
       <div class="asideTwo" id="panDisplay">
         <div class="slidecontainer">
           <h4>Panera</h4>
@@ -34,6 +44,7 @@
         </div>
       </div>
       <div><p></p></div>
+
       <div class="asideTwo" id="tacoDisplay">
         <div class="slidecontainer">
           <h4>Taco Bell</h4>
@@ -41,7 +52,17 @@
           <p><center>Points: <span id="tacoValue"></span></center></p>
         </div>
       </div>
-      
+      <div><p></p></div>
+
+      <div class="asideTwo" id="wendDisplay">
+        <div class="slidecontainer">
+          <h4>Wendy's</h4>
+          <input type="range" min="0" max="10" value="0" class="slider" id="wendRange">
+          <p><center>Points: <span id="wendValue"></span></center></p>
+        </div>
+      </div>
+      <div><p></p></div>
+
     </div>
     <div class="asideTwo" id="foodPic">
       <center><img src= "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png" class="centerPicture" height="350" width="350" id="myImage"></center>
@@ -58,6 +79,18 @@
         </label>
       </div> 
       <div><p></p></div>
+
+      <div class="asideThree">
+        <label class="foodType">
+          McDonald's
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="macCheck">
+          <div class="sliderSwitch round"></div>
+        </label>
+      </div>
+      <div><p></p></div>  
+
       <div class="asideThree">
         <label class="foodType">
           Panera
@@ -68,6 +101,7 @@
         </label>
       </div>
       <div><p></p></div>
+
       <div class="asideThree">
         <label class="foodType">
           Taco Bell
@@ -76,7 +110,19 @@
           <input type="checkbox" id="tacoCheck">
           <div class="sliderSwitch round"></div>
         </label>
-      </div>    
+      </div>
+      <div><p></p></div> 
+
+      <div class="asideThree">
+        <label class="foodType">
+          Wendy's
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="wendCheck">
+          <div class="sliderSwitch round"></div>
+        </label>
+      </div>
+      <div><p></p></div>    
 </div>
 
   <button class="button roll" type="button" id ="rollButt"  onclick="displayElement()">Roll the Dice</button> 
@@ -89,28 +135,49 @@
   var fpElem = document.getElementById('feelingPoints'),
       picElem = document.getElementById('foodPic'),
       menuElem = document.getElementById('takeoutChoices'),
-      tacoElem = document.getElementById('tacoDisplay'),
+      chipElem = document.getElementById('chipDisplay'),
+      macElem = document.getElementById('macDisplay'),
       panElem = document.getElementById('panDisplay'),
-      chipElem = document.getElementById('chipDisplay');
+      tacoElem = document.getElementById('tacoDisplay');
+      wendElem = document.getElementById('wendDisplay');
   var image = document.getElementById('myImage');
   var buttonRoll = document.getElementById('rollButt'),
       buttonRedo = document.getElementById('redoButt'),
       buttonBack = document.getElementById('backButt');
-  var tacoSwitch = document.getElementById('tacoCheck'),
+  var chipSwitch = document.getElementById('chipCheck'),
+      macSwitch = document.getElementById('macCheck'),
       panSwitch = document.getElementById('panCheck'),
-      chipSwitch = document.getElementById('chipCheck');
+      tacoSwitch = document.getElementById('tacoCheck');
+      wendSwitch = document.getElementById('wendCheck');
+  var chipSlider = document.getElementById("chipRange"),
+      chipOutput = document.getElementById("chipValue");
+  var macSlider = document.getElementById("macRange"),
+      macOutput = document.getElementById("macValue");
+  var panSlider = document.getElementById("panRange"),
+      panOutput = document.getElementById("panValue");
+  var tacoSlider = document.getElementById("tacoRange"),
+      tacoOutput = document.getElementById("tacoValue");
+  var wendSlider = document.getElementById("wendRange"),
+      wendOutput = document.getElementById("wendValue");
+  
+  
   fpElem.style.display = "block";
   picElem.style.display = "none";
   menuElem.style.display = "none";
   buttonRoll.style.display = "block";
   buttonRedo.style.display = "none";
   buttonBack.style.display = "none";
-  tacoElem.style.display = "block";
-  panElem.style.display = "block";
   chipElem.style.display = "block";
-  tacoSwitch.checked = true;
-  panSwitch.checked = true;
+  macElem.style.display = "block";
+  panElem.style.display = "block";
+  tacoElem.style.display = "block";
+  wendElem.style.display = "block";
+  
   chipSwitch.checked = true;
+  panSwitch.checked = true;
+  macSwitch.checked = true;
+  tacoSwitch.checked = true;
+  wendSwitch.checked = true;
 
   function displayElement() {
     if (fpElem.style.display === "none" && picElem.style.display === "block") {
@@ -149,87 +216,83 @@
     }
   }
 
-var tacoSlider = document.getElementById("tacoRange");
-var tacoOutput = document.getElementById("tacoValue");
-var panSlider = document.getElementById("panRange");
-var panOutput = document.getElementById("panValue");
-var chipSlider = document.getElementById("chipRange");
-var chipOutput = document.getElementById("chipValue");
-tacoOutput.innerHTML = tacoSlider.value;
-panOutput.innerHTML = panSlider.value;
 chipOutput.innerHTML = chipSlider.value;
+macOutput.innerHTML = macSlider.value;
+panOutput.innerHTML = panSlider.value;
+tacoOutput.innerHTML = tacoSlider.value;
+wendOutput.innerHTML = wendSlider.value;
 
-tacoSlider.oninput = function() {
-  tacoOutput.innerHTML = this.value;
+chipSlider.oninput = function() {
+  chipOutput.innerHTML = this.value;
+}
+macSlider.oninput = function() {
+  macOutput.innerHTML = this.value;
 }
 panSlider.oninput = function() {
   panOutput.innerHTML = this.value;
 }
-chipSlider.oninput = function() {
-  chipOutput.innerHTML = this.value;
+tacoSlider.oninput = function() {
+  tacoOutput.innerHTML = this.value;
+}
+wendSlider.oninput = function() {
+  wendOutput.innerHTML = this.value;
 }
 
 function fillRanArray(){
-  totalFeelingPoints = tacoSlider.value + panSlider.value + chipSlider.value;
-  if(totalFeelingPoints > 0)
-    {
-      randomArray = [];
-    }
-    else
-    {
-      randomArray = [1, 2, 3];
-    }
-    if(tacoSwitch.checked){
-      for(var i = 0; i < tacoSlider.value; i++)
-        {
-            randomArray.push(1);
-        }
-    }
-  for(var i = 0; i < panSlider.value; i++)
-    {
-      if(panSwitch.checked)
-        randomArray.push(2);
-    }
-  for(var i = 0; i < chipSlider.value; i++)
-    {
-      if(chipSwitch.checked)
-        randomArray.push(3);      
-    }
+  totalFeelingPoints = chipSlider.value + macSlider.value + panSlider.value + tacoSlider.value + wendSlider.value;
+  randomArray = [];
+  checksAndFeelings(chipSwitch, chipSlider, 1);
+  checksAndFeelings(macSwitch, macSlider, 2);
+  checksAndFeelings(panSwitch, panSlider, 3);
+  checksAndFeelings(tacoSwitch, tacoSlider, 4);
+  checksAndFeelings(wendSwitch, wendSlider, 5);
 }
+
 function randomImage(val){
   var image = document.getElementById('myImage');
   image.src = "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png";
   switch(val) {
     case 1:
-      image.src = "https://cdn.freebiesupply.com/logos/large/2x/taco-bell-5-logo-png-transparent.png";
-      //document.getElementById("foodHeader").innerHTML = "Tight!";
+      image.src = "https://cdn.freebiesupply.com/logos/large/2x/chipotle-mexican-grill-logo-png-transparent.png";
       break;
 
     case 2:
-      image.src = "https://cdn.freebiesupply.com/logos/large/2x/panera-bread-logo-png-transparent.png";
-      //document.getElementById("foodHeader").innerHTML = "Light!";
+      image.src = "https://seeklogo.net/wp-content/uploads/2011/04/old-mcdonalds-vector-logo.png";
       break;
 
     case 3:
-      image.src = "https://cdn.freebiesupply.com/logos/large/2x/chipotle-mexican-grill-logo-png-transparent.png";
-      //document.getElementById("foodHeader").innerHTML = "Right!";
+      image.src = "https://cdn.freebiesupply.com/logos/large/2x/panera-bread-logo-png-transparent.png";
+      break;
+
+    case 4:
+      image.src = "https://cdn.freebiesupply.com/logos/large/2x/taco-bell-5-logo-png-transparent.png";
+      break;
+
+    case 5:
+      image.src = "http://www.stickpng.com/assets/images/58429d58a6515b1e0ad75ae8.png";
       break;
     }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  tacoSwitch.addEventListener('change', function () {
-    checkSwitches(tacoSwitch, tacoDisplay, tacoSlider);
+  chipSwitch.addEventListener('change', function () {
+    checkSwitches(chipSwitch, chipDisplay, chipSlider, chipOutput);  
+  });
+  macSwitch.addEventListener('change', function () {
+    checkSwitches(macSwitch, macDisplay, macSlider, macOutput);
   });
   panSwitch.addEventListener('change', function () {
-    checkSwitches(panSwitch, panDisplay, panSlider);
+    checkSwitches(panSwitch, panDisplay, panSlider, panOutput);
   });
-  chipSwitch.addEventListener('change', function () {
-    checkSwitches(chipSwitch, chipDisplay, chipSlider);
+  tacoSwitch.addEventListener('change', function () {
+    checkSwitches(tacoSwitch, tacoDisplay, tacoSlider, tacoOutput);  
+  });
+  wendSwitch.addEventListener('change', function () {
+    checkSwitches(wendSwitch, wendDisplay, wendSlider, wendOutput);  
   });
 });
 
-function checkSwitches(foodSwitch, foodDisplay, slideVal){
+function checkSwitches(foodSwitch, foodDisplay, slideVal, foodOutput){
 if (foodSwitch.checked) {
       foodDisplay.style.display = "block";
       console.log('Checked');
@@ -237,7 +300,22 @@ if (foodSwitch.checked) {
       foodDisplay.style.display = "none";
       slideVal.value = 0;
       console.log('Not checked');
+      foodOutput.innerHTML = slideVal.value;
     }
+}
+
+function checksAndFeelings(foodSwitch, foodSlider, id){
+  if(foodSwitch.checked){
+    if(totalFeelingPoints <=0){
+      randomArray.push(id);
+    }
+    else{
+      for(var i = 0; i < foodSlider.value; i++)
+      {
+        randomArray.push(id);
+      }
+    }
+  }
 }
 </script>
 </body>
