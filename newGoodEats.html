@@ -53,6 +53,24 @@
       </div>
       <div><p></p></div>
 
+      <div class="asideTwo" id="phoDisplay">
+        <div class="slidecontainer">
+          <h4>Pho</h4>
+          <input type="range" min="0" max="10" value="0" class="slider" id="phoRange">
+          <p><center>Points: <span id="phoValue"></span></center></p>
+        </div>
+      </div>
+      <div><p></p></div>
+
+      <div class="asideTwo" id="qdobaDisplay">
+        <div class="slidecontainer">
+          <h4>Qdoba</h4>
+          <input type="range" min="0" max="10" value="0" class="slider" id="qdobaRange">
+          <p><center>Points: <span id="qdobaValue"></span></center></p>
+        </div>
+      </div>
+      <div><p></p></div>
+
       <div class="asideTwo" id="tacoDisplay">
         <div class="slidecontainer">
           <h4>Taco Bell</h4>
@@ -123,6 +141,28 @@
 
       <div class="asideThree">
         <label class="foodType">
+          Pho
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="phoCheck">
+          <div class="sliderSwitch round"></div>
+        </label>
+      </div>
+      <div><p></p></div>
+
+      <div class="asideThree">
+        <label class="foodType">
+          Qdoba
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="qdobaCheck">
+          <div class="sliderSwitch round"></div>
+        </label>
+      </div>
+      <div><p></p></div>
+
+      <div class="asideThree">
+        <label class="foodType">
           Taco Bell
         </label>
         <label class="switch">
@@ -158,6 +198,8 @@
       chickElem = document.getElementById('chickDisplay'),
       macElem = document.getElementById('macDisplay'),
       panElem = document.getElementById('panDisplay'),
+      phoElem = document.getElementById('phoDisplay'),
+      qdobaElem = document.getElementById('qdobaDisplay'),
       tacoElem = document.getElementById('tacoDisplay');
       wendElem = document.getElementById('wendDisplay');
   var image = document.getElementById('myImage');
@@ -168,6 +210,8 @@
       chipSwitch = document.getElementById('chipCheck'),
       macSwitch = document.getElementById('macCheck'),
       panSwitch = document.getElementById('panCheck'),
+      phoSwitch = document.getElementById('phoCheck'),
+      qdobaSwitch = document.getElementById('qdobaCheck'),
       tacoSwitch = document.getElementById('tacoCheck');
       wendSwitch = document.getElementById('wendCheck');
   var chickSlider = document.getElementById("chickRange"),
@@ -178,6 +222,10 @@
       macOutput = document.getElementById("macValue");
   var panSlider = document.getElementById("panRange"),
       panOutput = document.getElementById("panValue");
+  var phoSlider = document.getElementById("phoRange"),
+      phoOutput = document.getElementById("phoValue");
+  var qdobaSlider = document.getElementById("qdobaRange"),
+      qdobaOutput = document.getElementById("qdobaValue");
   var tacoSlider = document.getElementById("tacoRange"),
       tacoOutput = document.getElementById("tacoValue");
   var wendSlider = document.getElementById("wendRange"),
@@ -194,15 +242,24 @@
   chipElem.style.display = "block";
   macElem.style.display = "block";
   panElem.style.display = "block";
+  phoElem.style.display = "block";
+  qdobaElem.style.display = "block";
   tacoElem.style.display = "block";
   wendElem.style.display = "block";
   
   chickSwitch.checked = true;
   chipSwitch.checked = true;
   panSwitch.checked = true;
+  phoSwitch.checked = true;
+  qdobaSwitch.checked = true;
   macSwitch.checked = true;
   tacoSwitch.checked = true;
   wendSwitch.checked = true;
+
+  //chickSwitch.checked = localStorage.getItem("chickSwitch");
+  //console.log("Storage");
+  //console.log(chickSwitch.checked);
+
 
   function displayElement() {
     if (fpElem.style.display === "none" && picElem.style.display === "block") {
@@ -245,6 +302,8 @@ chickOutput.innerHTML = chickSlider.value;
 chipOutput.innerHTML = chipSlider.value;
 macOutput.innerHTML = macSlider.value;
 panOutput.innerHTML = panSlider.value;
+phoOutput.innerHTML = phoSlider.value;
+qdobaOutput.innerHTML = qdobaSlider.value;
 tacoOutput.innerHTML = tacoSlider.value;
 wendOutput.innerHTML = wendSlider.value;
 
@@ -260,6 +319,12 @@ macSlider.oninput = function() {
 panSlider.oninput = function() {
   panOutput.innerHTML = this.value;
 }
+phoSlider.oninput = function() {
+  phoOutput.innerHTML = this.value;
+}
+qdobaSlider.oninput = function() {
+  qdobaOutput.innerHTML = this.value;
+}
 tacoSlider.oninput = function() {
   tacoOutput.innerHTML = this.value;
 }
@@ -268,19 +333,21 @@ wendSlider.oninput = function() {
 }
 
 function fillRanArray(){
-  totalFeelingPoints = chickSlider.value + chipSlider.value + macSlider.value + panSlider.value + tacoSlider.value + wendSlider.value;
+  totalFeelingPoints = chickSlider.value + chipSlider.value + macSlider.value + panSlider.value + phoSlider.value + qdobaSlider.value + tacoSlider.value + wendSlider.value;
   randomArray = [];
   checksAndFeelings(chickSwitch, chickSlider, 1);
   checksAndFeelings(chipSwitch, chipSlider, 2);
   checksAndFeelings(macSwitch, macSlider, 3);
   checksAndFeelings(panSwitch, panSlider, 4);
-  checksAndFeelings(tacoSwitch, tacoSlider, 5);
-  checksAndFeelings(wendSwitch, wendSlider, 6);
+  checksAndFeelings(phoSwitch, phoSlider, 5);
+  checksAndFeelings(qdobaSwitch, qdobaSlider, 6);
+  checksAndFeelings(tacoSwitch, tacoSlider, 7);
+  checksAndFeelings(wendSwitch, wendSlider, 8);
 }
 
 function randomImage(val){
   var image = document.getElementById('myImage');
-  image.src = "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png";
+  image.src = "https://library.kissclipart.com/20180918/whw/kissclipart-pho-noodles-coloring-clipart-pho-vietnamese-cuisin-0f632c5b34782bbf.png";
   switch(val) {
     case 1:
       image.src = "Chickfila.png";
@@ -299,10 +366,18 @@ function randomImage(val){
       break;
 
     case 5:
-      image.src = "Tacobell.png";
+      image.src = "Pho.png";
       break;
 
     case 6:
+      image.src = "Qdoba.png";
+      break;
+
+    case 7:
+      image.src = "Tacobell.png";
+      break;
+
+    case 8:
       image.src = "Wendys.png";
       break;
     }
@@ -321,6 +396,12 @@ document.addEventListener('DOMContentLoaded', function () {
   panSwitch.addEventListener('change', function () {
     checkSwitches(panSwitch, panDisplay, panSlider, panOutput);
   });
+  phoSwitch.addEventListener('change', function () {
+    checkSwitches(phoSwitch, phoDisplay, phoSlider, phoOutput);
+  });
+  qdobaSwitch.addEventListener('change', function () {
+    checkSwitches(qdobaSwitch, qdobaDisplay, qdobaSlider, qdobaOutput);
+  });
   tacoSwitch.addEventListener('change', function () {
     checkSwitches(tacoSwitch, tacoDisplay, tacoSlider, tacoOutput);  
   });
@@ -333,11 +414,15 @@ function checkSwitches(foodSwitch, foodDisplay, slideVal, foodOutput){
 if (foodSwitch.checked) {
       foodDisplay.style.display = "block";
       console.log('Checked');
+      //localStorage.setItem(foodSwitch.id, foodSwitch.checked);
     } else {
       foodDisplay.style.display = "none";
       slideVal.value = 0;
       console.log('Not checked');
       foodOutput.innerHTML = slideVal.value;
+      //localStorage.setItem(foodSwitch.id, foodSwitch.checked);
+      //console.log(foodSwitch.id);
+      //console.log(foodSwitch.checked);
     }
 }
 
