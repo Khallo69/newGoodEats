@@ -283,12 +283,13 @@
       </div>
       <div><p></p></div>  
 </div>
-
+  <audio id="audio" src=click.mp3></audio>
   <button class="button roll" type="button" id ="rollButt"  onclick="displayElement()">Roll the Dice</button> 
   <button class="button redo" type="button" id ="redoButt"  onclick="displayElement()">Redo Points</button> 
   <button class="button back" type="button" id ="backButt"  onclick="displayMenu()">Back</button> 
 
 <script>
+  var audio = document.getElementById("audio");
   var randomArray = [1, 2, 3];
   var totalFeelingPoints = 0;
   var fpElem = document.getElementById('feelingPoints'),
@@ -351,7 +352,6 @@
   var mongSlider = document.getElementById("mongRange"),
       mongOutput = document.getElementById("mongValue");
   
-  
   fpElem.style.display = "block";
   picElem.style.display = "none";
   menuElem.style.display = "none";
@@ -386,12 +386,8 @@
   pizzaSwitch.checked = true;
   mongSwitch.checked = true;
 
-  //chickSwitch.checked = localStorage.getItem("chickSwitch");
-  //console.log("Storage");
-  //console.log(chickSwitch.checked);
-
-
-  function displayElement() {
+  function displayElement() {   
+    audio.play();
     if (fpElem.style.display === "none" && picElem.style.display === "block") {
       fpElem.style.display = "block";
       picElem.style.display = "none"
@@ -401,14 +397,14 @@
       fpElem.style.display = "none";
       picElem.style.display = "block";
       fillRanArray();
-      console.log(randomArray);
       randomImage(randomArray[Math.floor(Math.random() * randomArray.length)]);
       buttonRedo.style.backgroundColor = "#cf4f45";
       buttonRoll.style.display = "none";
       buttonRedo.style.display = "block";
     }
-}
+  }
   function displayMenu() {
+    audio.play();
     if (fpElem.style.display === "block" || picElem.style.display === "block")
     {
       fpElem.style.display = "none";
@@ -507,51 +503,39 @@ function randomImage(val){
     case 1:
       image.src = "Chickfila.png";
       break;
-
     case 2:
       image.src = "Chipotle.png";
       break;
-
     case 3:
       image.src = "McDonalds.png";
       break;
-
     case 4:
       image.src = "Panera.png";
       break;
-
     case 5:
       image.src = "Pho.png";
       break;
-
     case 6:
       image.src = "Qdoba.png";
       break;
-
     case 7:
       image.src = "Tacobell.png";
       break;
-
     case 8:
       image.src = "Wendys.png";
       break;
-
     case 9:
       image.src = "Mexican.png";
       break;
-
     case 10:
       image.src = "Chinese.png";
       break;
-
     case 11:
       image.src = "Italian.png";
       break;
-
     case 12:
       image.src = "Pizza.png";
       break;
-
     case 13:
       image.src = "Mongolian.png";
       break;
@@ -560,42 +544,55 @@ function randomImage(val){
 
 document.addEventListener('DOMContentLoaded', function () {
   chickSwitch.addEventListener('change', function () {
+    audio.play();
     checkSwitches(chickSwitch, chickDisplay, chickSlider, chickOutput);  
   });
   chipSwitch.addEventListener('change', function () {
+    audio.play();
     checkSwitches(chipSwitch, chipDisplay, chipSlider, chipOutput);  
   });
   macSwitch.addEventListener('change', function () {
+    audio.play();
     checkSwitches(macSwitch, macDisplay, macSlider, macOutput);
   });
   panSwitch.addEventListener('change', function () {
+    audio.play();
     checkSwitches(panSwitch, panDisplay, panSlider, panOutput);
   });
   phoSwitch.addEventListener('change', function () {
+    audio.play();
     checkSwitches(phoSwitch, phoDisplay, phoSlider, phoOutput);
   });
   qdobaSwitch.addEventListener('change', function () {
+    audio.play();
     checkSwitches(qdobaSwitch, qdobaDisplay, qdobaSlider, qdobaOutput);
   });
   tacoSwitch.addEventListener('change', function () {
+    audio.play();
     checkSwitches(tacoSwitch, tacoDisplay, tacoSlider, tacoOutput);  
   });
   wendSwitch.addEventListener('change', function () {
+    audio.play();
     checkSwitches(wendSwitch, wendDisplay, wendSlider, wendOutput);  
   });
   mexSwitch.addEventListener('change', function () {
+    audio.play();
     checkSwitches(mexSwitch, mexDisplay, mexSlider, mexOutput);  
   });
   chinSwitch.addEventListener('change', function () {
+    audio.play();
     checkSwitches(chinSwitch, chinDisplay, chinSlider, chinOutput);  
   });
   italSwitch.addEventListener('change', function () {
+    audio.play();
     checkSwitches(italSwitch, italDisplay, italSlider, italOutput);  
   });
   pizzaSwitch.addEventListener('change', function () {
+    audio.play();
     checkSwitches(pizzaSwitch, pizzaDisplay, pizzaSlider, pizzaOutput);  
   });
   mongSwitch.addEventListener('change', function () {
+    audio.play();
     checkSwitches(mongSwitch, mongDisplay, mongSlider, mongOutput);  
   });
 });
@@ -603,16 +600,10 @@ document.addEventListener('DOMContentLoaded', function () {
 function checkSwitches(foodSwitch, foodDisplay, slideVal, foodOutput){
 if (foodSwitch.checked) {
       foodDisplay.style.display = "block";
-      console.log('Checked');
-      //localStorage.setItem(foodSwitch.id, foodSwitch.checked);
     } else {
       foodDisplay.style.display = "none";
       slideVal.value = 0;
-      console.log('Not checked');
       foodOutput.innerHTML = slideVal.value;
-      //localStorage.setItem(foodSwitch.id, foodSwitch.checked);
-      //console.log(foodSwitch.id);
-      //console.log(foodSwitch.checked);
     }
 }
 
