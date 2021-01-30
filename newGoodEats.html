@@ -89,6 +89,51 @@
       </div>
       <div><p></p></div>
 
+      <div class="asideTwo" id="mexDisplay">
+        <div class="slidecontainer">
+          <h4>Mexican</h4>
+          <input type="range" min="0" max="10" value="0" class="slider" id="mexRange">
+          <p><center>Points: <span id="mexValue"></span></center></p>
+        </div>
+      </div>
+      <div><p></p></div>
+
+      <div class="asideTwo" id="chinDisplay">
+        <div class="slidecontainer">
+          <h4>Chinese</h4>
+          <input type="range" min="0" max="10" value="0" class="slider" id="chinRange">
+          <p><center>Points: <span id="chinValue"></span></center></p>
+        </div>
+      </div>
+      <div><p></p></div>
+
+      <div class="asideTwo" id="italDisplay">
+        <div class="slidecontainer">
+          <h4>Italian</h4>
+          <input type="range" min="0" max="10" value="0" class="slider" id="italRange">
+          <p><center>Points: <span id="italValue"></span></center></p>
+        </div>
+      </div>
+      <div><p></p></div>
+
+      <div class="asideTwo" id="pizzaDisplay">
+        <div class="slidecontainer">
+          <h4>Pizza</h4>
+          <input type="range" min="0" max="10" value="0" class="slider" id="pizzaRange">
+          <p><center>Points: <span id="pizzaValue"></span></center></p>
+        </div>
+      </div>
+      <div><p></p></div>
+
+      <div class="asideTwo" id="mongDisplay">
+        <div class="slidecontainer">
+          <h4>Mongolian</h4>
+          <input type="range" min="0" max="10" value="0" class="slider" id="mongRange">
+          <p><center>Points: <span id="mongValue"></span></center></p>
+        </div>
+      </div>
+      <div><p></p></div>
+
     </div>
     <div class="asideFour" id="foodPic">
       <center><img src= "https://upload.wikimedia.org/wikipedia/commons/5/59/Empty.png" class="centerPicture" height="350" width="350" id="myImage"></center>
@@ -181,7 +226,62 @@
           <div class="sliderSwitch round"></div>
         </label>
       </div>
-      <div><p></p></div>    
+      <div><p></p></div> 
+
+      <div class="asideThree">
+        <label class="foodType">
+          Mexican
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="mexCheck">
+          <div class="sliderSwitch round"></div>
+        </label>
+      </div>
+      <div><p></p></div>  
+
+      <div class="asideThree">
+        <label class="foodType">
+          Chinese
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="chinCheck">
+          <div class="sliderSwitch round"></div>
+        </label>
+      </div>
+      <div><p></p></div> 
+
+      <div class="asideThree">
+        <label class="foodType">
+          Italian
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="italCheck">
+          <div class="sliderSwitch round"></div>
+        </label>
+      </div>
+      <div><p></p></div> 
+
+      <div class="asideThree">
+        <label class="foodType">
+          Pizza
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="pizzaCheck">
+          <div class="sliderSwitch round"></div>
+        </label>
+      </div>
+      <div><p></p></div> 
+
+      <div class="asideThree">
+        <label class="foodType">
+          Mongolian
+        </label>
+        <label class="switch">
+          <input type="checkbox" id="mongCheck">
+          <div class="sliderSwitch round"></div>
+        </label>
+      </div>
+      <div><p></p></div>  
 </div>
 
   <button class="button roll" type="button" id ="rollButt"  onclick="displayElement()">Roll the Dice</button> 
@@ -202,6 +302,11 @@
       qdobaElem = document.getElementById('qdobaDisplay'),
       tacoElem = document.getElementById('tacoDisplay');
       wendElem = document.getElementById('wendDisplay');
+      mexElem = document.getElementById('mexDisplay');
+      chinElem = document.getElementById('chinDisplay');
+      italElem = document.getElementById('italDisplay');
+      pizzaElem = document.getElementById('pizzaDisplay');
+      mongElem = document.getElementById('mongDisplay');
   var image = document.getElementById('myImage');
   var buttonRoll = document.getElementById('rollButt'),
       buttonRedo = document.getElementById('redoButt'),
@@ -214,6 +319,11 @@
       qdobaSwitch = document.getElementById('qdobaCheck'),
       tacoSwitch = document.getElementById('tacoCheck');
       wendSwitch = document.getElementById('wendCheck');
+      mexSwitch = document.getElementById('mexCheck');
+      chinSwitch = document.getElementById('chinCheck');
+      italSwitch = document.getElementById('italCheck');
+      pizzaSwitch = document.getElementById('pizzaCheck');
+      mongSwitch = document.getElementById('mongCheck');
   var chickSlider = document.getElementById("chickRange"),
       chickOutput = document.getElementById("chickValue");
   var chipSlider = document.getElementById("chipRange"),
@@ -230,6 +340,16 @@
       tacoOutput = document.getElementById("tacoValue");
   var wendSlider = document.getElementById("wendRange"),
       wendOutput = document.getElementById("wendValue");
+  var mexSlider = document.getElementById("mexRange"),
+      mexOutput = document.getElementById("mexValue");
+  var chinSlider = document.getElementById("chinRange"),
+      chinOutput = document.getElementById("chinValue");
+  var italSlider = document.getElementById("italRange"),
+      italOutput = document.getElementById("italValue");
+  var pizzaSlider = document.getElementById("pizzaRange"),
+      pizzaOutput = document.getElementById("pizzaValue");
+  var mongSlider = document.getElementById("mongRange"),
+      mongOutput = document.getElementById("mongValue");
   
   
   fpElem.style.display = "block";
@@ -246,7 +366,12 @@
   qdobaElem.style.display = "block";
   tacoElem.style.display = "block";
   wendElem.style.display = "block";
-  
+  mexElem.style.display = "block";
+  chinElem.style.display = "block";
+  italElem.style.display = "block";
+  pizzaElem.style.display = "block";
+  mongElem.style.display = "block";
+
   chickSwitch.checked = true;
   chipSwitch.checked = true;
   panSwitch.checked = true;
@@ -255,6 +380,11 @@
   macSwitch.checked = true;
   tacoSwitch.checked = true;
   wendSwitch.checked = true;
+  mexSwitch.checked = true;
+  chinSwitch.checked = true;
+  italSwitch.checked = true;
+  pizzaSwitch.checked = true;
+  mongSwitch.checked = true;
 
   //chickSwitch.checked = localStorage.getItem("chickSwitch");
   //console.log("Storage");
@@ -306,6 +436,11 @@ phoOutput.innerHTML = phoSlider.value;
 qdobaOutput.innerHTML = qdobaSlider.value;
 tacoOutput.innerHTML = tacoSlider.value;
 wendOutput.innerHTML = wendSlider.value;
+mexOutput.innerHTML = mexSlider.value;
+chinOutput.innerHTML = chinSlider.value;
+italOutput.innerHTML = italSlider.value;
+pizzaOutput.innerHTML = pizzaSlider.value;
+mongOutput.innerHTML = mongSlider.value;
 
 chickSlider.oninput = function() {
   chickOutput.innerHTML = this.value;
@@ -331,9 +466,24 @@ tacoSlider.oninput = function() {
 wendSlider.oninput = function() {
   wendOutput.innerHTML = this.value;
 }
+mexSlider.oninput = function() {
+  mexOutput.innerHTML = this.value;
+}
+chinSlider.oninput = function() {
+  chinOutput.innerHTML = this.value;
+}
+italSlider.oninput = function() {
+  italOutput.innerHTML = this.value;
+}
+pizzaSlider.oninput = function() {
+  pizzaOutput.innerHTML = this.value;
+}
+mongSlider.oninput = function() {
+  mongOutput.innerHTML = this.value;
+}
 
 function fillRanArray(){
-  totalFeelingPoints = chickSlider.value + chipSlider.value + macSlider.value + panSlider.value + phoSlider.value + qdobaSlider.value + tacoSlider.value + wendSlider.value;
+  totalFeelingPoints = chickSlider.value + chipSlider.value + macSlider.value + panSlider.value + phoSlider.value + qdobaSlider.value + tacoSlider.value + wendSlider.value + mexSlider.value + chinSlider.value + italSlider.value + pizzaSlider.value + mongSlider.value;
   randomArray = [];
   checksAndFeelings(chickSwitch, chickSlider, 1);
   checksAndFeelings(chipSwitch, chipSlider, 2);
@@ -343,6 +493,11 @@ function fillRanArray(){
   checksAndFeelings(qdobaSwitch, qdobaSlider, 6);
   checksAndFeelings(tacoSwitch, tacoSlider, 7);
   checksAndFeelings(wendSwitch, wendSlider, 8);
+  checksAndFeelings(mexSwitch, mexSlider, 9);
+  checksAndFeelings(chinSwitch, chinSlider, 10);
+  checksAndFeelings(italSwitch, italSlider, 11);
+  checksAndFeelings(pizzaSwitch, pizzaSlider, 12);
+  checksAndFeelings(mongSwitch, mongSlider, 13);
 }
 
 function randomImage(val){
@@ -380,6 +535,26 @@ function randomImage(val){
     case 8:
       image.src = "Wendys.png";
       break;
+
+    case 9:
+      image.src = "Mexican.png";
+      break;
+
+    case 10:
+      image.src = "Chinese.png";
+      break;
+
+    case 11:
+      image.src = "Italian.png";
+      break;
+
+    case 12:
+      image.src = "Pizza.png";
+      break;
+
+    case 13:
+      image.src = "Mongolian.png";
+      break;
     }
 }
 
@@ -407,6 +582,21 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   wendSwitch.addEventListener('change', function () {
     checkSwitches(wendSwitch, wendDisplay, wendSlider, wendOutput);  
+  });
+  mexSwitch.addEventListener('change', function () {
+    checkSwitches(mexSwitch, mexDisplay, mexSlider, mexOutput);  
+  });
+  chinSwitch.addEventListener('change', function () {
+    checkSwitches(chinSwitch, chinDisplay, chinSlider, chinOutput);  
+  });
+  italSwitch.addEventListener('change', function () {
+    checkSwitches(italSwitch, italDisplay, italSlider, italOutput);  
+  });
+  pizzaSwitch.addEventListener('change', function () {
+    checkSwitches(pizzaSwitch, pizzaDisplay, pizzaSlider, pizzaOutput);  
+  });
+  mongSwitch.addEventListener('change', function () {
+    checkSwitches(mongSwitch, mongDisplay, mongSlider, mongOutput);  
   });
 });
 
